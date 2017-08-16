@@ -1,0 +1,10 @@
+name: BloodHunter
+main: Chaostix\main
+author: Chaostix
+version: AdreonOnly
+api: [1.0.0, 3.0.0-ALPHA5, 3.0.0-ALPHA6]
+load: POSTWORLD
+commands:
+ bloodclaim:
+  desciption: Claim the Blood
+  usage: /bloodclaim
