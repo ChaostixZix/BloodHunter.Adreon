@@ -17,8 +17,11 @@ class main extends PluginBase implements Listener
 
     private $drops;
     private $xp;
+    private $conf;
     public function onEnable()
     {
+        $this->saveConfig();
+        $this->conf = $this->getConfig();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
 
@@ -27,7 +30,8 @@ class main extends PluginBase implements Listener
         $this->drops[$player->getName()][1] = $player->getInventory()->getArmorContents();
         $this->drops[$player->getName()][0] = $player->getInventory()->getContents();
         $this->xp[$player->getName()][0] = $player->getXpLevel();
-        if(strtolower($player->getLevel()->getName()) == "kejupvp")
+        $world = $this->conf->get('world');
+        if(strtolower($player->getLevel()->getName()) == strtolower($world))
         {
             $item = Item::get(331);
             $item->setCustomName($player->getName() . "'s Blood");
